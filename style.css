@@ -1,0 +1,140 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  color: #222;
+}
+
+.header {
+  background: #1f4e79;
+  color: white;
+  padding: 20px 30px;
+}
+
+.header h1 {
+  margin: 0 0 10px 0;
+  font-size: 30px;
+}
+
+.header p {
+  margin: 0;
+  max-width: 900px;
+  line-height: 1.5;
+}
+
+.controls {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px 30px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.control-group label {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.control-group select {
+  padding: 8px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas:
+    "map detail"
+    "line line";
+  gap: 20px;
+  padding: 20px 30px 30px;
+}
+
+.map-card {
+  grid-area: map;
+}
+
+.detail-card {
+  grid-area: detail;
+}
+
+.line-card {
+  grid-area: line;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+#map,
+#lineChart {
+  width: 100%;
+  min-height: 420px;
+}
+
+/* Important for responsive SVG charts */
+#map svg,
+#lineChart svg {
+  width: 100%;
+  height: auto;
+}
+
+/* New: keep map metric label above the SVG, not overlapping */
+.map-metric-label {
+  margin: 6px 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+#countryDetail {
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.note {
+  color: #666;
+  font-size: 14px;
+}
+
+.tooltip {
+  position: absolute;
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.country-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "map"
+      "detail"
+      "line";
+  }
+}

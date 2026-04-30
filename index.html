@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COVID-19 Global Dashboard</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- D3 library -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- TopoJSON client (not strictly needed now, but harmless) -->
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>COVID-19 Global Interactive Dashboard</h1>
+    <p>
+      Explore global COVID-19 trends in cases, deaths, and vaccinations
+      across countries and continents over time.
+    </p>
+  </header>
+
+  <section class="controls">
+    <div class="control-group">
+      <label for="metricSelect">Metric</label>
+      <select id="metricSelect">
+        <option value="new_cases_smoothed">New Cases Smoothed</option>
+        <option value="new_deaths_smoothed">New Deaths Smoothed</option>
+        <option value="total_vaccinations_per_hundred">Vaccinations per Hundred</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label for="continentSelect">Continent</label>
+      <select id="continentSelect">
+        <option value="All">All</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label for="countrySelect">Countries</label>
+      <select id="countrySelect" multiple size="6"></select>
+    </div>
+  </section>
+
+  <main class="dashboard-grid">
+    <section class="card map-card">
+      <h2>Choropleth Map</h2>
+      <p id="mapMetricLabel" class="map-metric-label">
+        Map Metric (latest value): Total cases per million
+      </p>
+      <div id="map"></div>
+      <p class="note">
+        Darker blue indicates higher values for the selected metric
+        (per-person where applicable). The map shows the latest available
+        value for each country.
+      </p>
+    </section>
+
+    <section class="card detail-card">
+      <h2>Country Detail Panel</h2>
+      <div id="countryDetail">
+        <p>Select a country to view summary statistics.</p>
+      </div>
+    </section>
+
+    <section class="card line-card">
+      <h2>Multi-Country Time Series</h2>
+      <div id="lineChart"></div>
+    </section>
+  </main>
+
+  <div id="tooltip" class="tooltip"></div>
+
+  <!-- Your dashboard logic -->
+  <script src="script.js"></script>
+</body>
+</html>
